@@ -11,7 +11,9 @@ public class Main {
         initializeMatrix();
         drawV1();
         drawV2();
-        drawV3();
+//        drawV3(); // this method should be turned off when testing drawV4()
+        // drawV3() in some way conflicts with drawV4(), but I have found the reason yet.
+        drawV4();
     }
 
     public static void drawField(Point[][] field) {
@@ -105,7 +107,7 @@ public class Main {
         System.out.print(printPoint(currentPoint));
         String moveDirection = "leftToRight";
 
-        for (int i = 0; i < fieldSize * fieldSize -1; i++) {
+        for (int i = 0; i < fieldSize * fieldSize - 1; i++) {
 
             switch (moveDirection) {
                 case "leftToRight":
@@ -127,28 +129,67 @@ public class Main {
             if (currentPoint.equals(rightTopBorder)) {
                 moveDirection = "topToBottom";
                 System.out.println("Changed direction: " + moveDirection);
-                rightTopBorder.setLocation(field[row+1][col-1]);
-            }
-            else if (currentPoint.equals(rightBottomBorder)) {
+                rightTopBorder.setLocation(field[row + 1][col - 1]);
+            } else if (currentPoint.equals(rightBottomBorder)) {
                 moveDirection = "rightToLeft";
                 System.out.println("Changed direction: " + moveDirection);
-                rightBottomBorder.setLocation(field[row-1][col-1]);
-            }
-            else if (currentPoint.equals(leftBottomBorder)) {
+                rightBottomBorder.setLocation(field[row - 1][col - 1]);
+            } else if (currentPoint.equals(leftBottomBorder)) {
                 moveDirection = "bottomToTop";
                 System.out.println("Changed direction: " + moveDirection);
-                leftBottomBorder.setLocation(field[row-1][col+1]);
-            }
-            else if (currentPoint.equals(leftTopBorder)) {
+                leftBottomBorder.setLocation(field[row - 1][col + 1]);
+            } else if (currentPoint.equals(leftTopBorder)) {
                 moveDirection = "leftToRight";
                 System.out.println("Changed direction: " + moveDirection);
-                leftTopBorder.setLocation(field[row+1][col+1]);
+                leftTopBorder.setLocation(field[row + 1][col + 1]);
             }
         }
     }
 
+    public static void drawV4() {
+        System.out.println("-------------------------------------------");
+        System.out.println("DRAW V4:");
+
+        int row = 0;
+        int col = 0;
+        Point currentPoint = field[row][col];
+        System.out.print(printPoint(currentPoint));
+        String moveDirection = "leftToRight";
+
+        for (int i = 0; i < fieldSize * fieldSize - 1; i++) {
+
+            switch (moveDirection) {
+                case "leftToRight":
+                    col = col + 1;
+                    moveDirection = row == 0 ? "rightTopToLeftBottom" : "leftBottomToRightTop";
+                    //this case works only for 1 cell and we have to change direction
+                    break;
+                case "rightTopToLeftBottom":
+                    col = col - 1;
+                    row = row + 1;
+                    if (col == 0 && row + 1 < fieldSize) moveDirection = "topToBottom";
+                    if (row == fieldSize - 1) moveDirection = "leftToRight";
+                    break;
+                case "topToBottom": //OK
+                    row = row + 1;
+                    moveDirection = col == 0 ? "leftBottomToRightTop" : "rightTopToLeftBottom";
+                    //this case works only for 1 cell and we have to change direction
+                    break;
+                case "leftBottomToRightTop":
+                    col = col + 1;
+                    row = row - 1;
+                    if (row == 0 && col + 1 <= fieldSize) moveDirection = "leftToRight";
+                    if (col == fieldSize - 1) moveDirection = "topToBottom";
+                    break;
+            }
+
+            currentPoint = field[row][col];
+            System.out.print(printPoint(currentPoint));
+        }
+    }
+
     public static String printPoint(Point p) {
-        String result = "";
+        String result;
         result = " " + "X:" + (int) p.getX() + " Y:" + (int) p.getY() + " |";
         return result;
     }
