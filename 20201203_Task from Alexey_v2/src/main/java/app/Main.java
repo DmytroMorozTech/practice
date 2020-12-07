@@ -18,10 +18,10 @@ public class Main {
         int length = field.length;
         Point currentPoint;
 
-        for (int j = 0; j < length; j++) {
+        for (Point[] points : field) {
             for (int k = 0; k < length; k++) {
-                currentPoint = field[j][k];
-                System.out.print(" " + "X:" + (int) currentPoint.getX() + " Y:" + (int) currentPoint.getY() + " |");
+                currentPoint = points[k];
+                System.out.print(convertPointToStr(currentPoint));
                 if (k == length - 1) System.out.print("\n");
             }
         }
@@ -46,22 +46,28 @@ public class Main {
     }
 
     public static void drawV4() {
-        System.out.println("------------------------------------");
-        System.out.println("DRAW V4:");
         String s;
-
         MyPoint point = new MyPoint();
         fieldV4.add("X:0 Y:0 |");
 
-        for (int i = 0; i < fieldSize * fieldSize - 1; i++) {
-            point.nextStep();
+        System.out.println("------------------------------------");
+        System.out.println("DRAW V4:");
 
-            s = "X:" + (int) point.getCurrentX() + " Y:" + (int) point.getCurrentY() + " |";
+        for (int i = 0; i < fieldSize * fieldSize - 1; i++) {
+            s = convertMyPointToStr(point.nextStep());
             fieldV4.add(s);
         }
 
         for (String str : fieldV4) {
             System.out.print(str);
         }
+    }
+
+    public static String convertMyPointToStr(MyPoint p) {
+        return " X:" + (int) p.getCurrentX() + " Y:" + (int) p.getCurrentY() + " |";
+    }
+
+    public static String convertPointToStr(Point p) {
+        return " X:" + (int) p.getX() + " Y:" + (int) p.getY() + " |";
     }
 }

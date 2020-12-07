@@ -4,25 +4,22 @@ import java.awt.*;
 
 public class MyPoint extends Point {
 
-    Point activePoint;
+    Point activeP;
     int direction;
     int fieldSize;
 
+    public MyPoint() {
+        this.activeP = new Point(0, 0);
+        this.direction = 0;
+        this.fieldSize = Main.fieldSize;
+    }
+
     public double getCurrentX() {
-        return activePoint.getX();
+        return activeP.getX();
     }
 
     public double getCurrentY() {
-        return activePoint.getY();
-    }
-
-    private double currentX; // col
-    private double currentY; // row
-
-    public MyPoint() {
-        this.activePoint = new Point(0, 0);
-        this.direction = 0;
-        this.fieldSize = Main.fieldSize;
+        return activeP.getY();
     }
 
     public MyPoint nextStep() {
@@ -42,17 +39,13 @@ public class MyPoint extends Point {
         }
     }
 
-    public MyPoint c(int col) {
-        currentX = activePoint.getX();
-        currentY = activePoint.getY();
-        this.activePoint.setLocation(currentX + col, currentY);
+    private MyPoint c(int col) {
+        this.activeP.setLocation(activeP.x + col, activeP.y);
         return this;
     }
 
-    public MyPoint r(int row) {
-        currentX = activePoint.getX();
-        currentY = activePoint.getY();
-        this.activePoint.setLocation(currentX, currentY + row);
+    private MyPoint r(int row) {
+        this.activeP.setLocation(activeP.x, activeP.y + row);
         return this;
     }
 
@@ -62,18 +55,18 @@ public class MyPoint extends Point {
     }
 
     private boolean isColFirst() {
-        return activePoint.getX() == 0;
+        return activeP.x == 0;
     }
 
     private boolean isRowLast() {
-        return activePoint.getY() == fieldSize - 1;
+        return activeP.y == fieldSize - 1;
     }
 
     private boolean isRowFirst() {
-        return activePoint.getY() == 0;
+        return activeP.y == 0;
     }
 
     private boolean isColLast() {
-        return activePoint.getX() == fieldSize - 1;
+        return activeP.x == fieldSize - 1;
     }
 }
