@@ -33,11 +33,11 @@ public class Main {
         System.out.println("Initially generated BASIC FIELD:");
         System.out.println("-------------------------------------------");
 
-        for (int i = 0; i < fieldSize; i++) {
-            // i represents rows (in another words it represents Y-coordinate);
-            for (int j = 0; j < fieldSize; j++) {
-                // j represents columns (in another words it represents X-coordinate);
-                field[i][j] = new Point(j, i); // when creating a Point we have to pass (x,y)
+        for (int y = 0; y < fieldSize; y++) {
+            // y represents rows (in another words it represents Y-coordinate);
+            for (int x = 0; x < fieldSize; x++) {
+                // x represents columns (in another words it represents X-coordinate);
+                field[y][x] = new Point(x, y); // when creating a Point we have to pass (x,y)
                 // coordinates of the new Point to it.
             }
         }
@@ -64,7 +64,7 @@ public class Main {
     }
 
     public static String convertMyPointToStr(MyPoint p) {
-        return " X:" + (int) p.getCurrentX() + " Y:" + (int) p.getCurrentY() + " |";
+        return " X:" + p.getX() + " Y:" + p.getY() + " |";
     }
 
     public static String convertPointToStr(Point p) {
