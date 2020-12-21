@@ -1,3 +1,5 @@
+//https://www.hackerrank.com/challenges/compare-the-triplets/problem
+
 package CompareTheTriplets;
 
 import java.util.ArrayList;
