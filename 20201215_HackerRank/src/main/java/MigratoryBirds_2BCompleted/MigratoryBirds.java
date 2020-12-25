@@ -4,7 +4,7 @@ package MigratoryBirds_2BCompleted;
 import java.util.*;
 
 public class MigratoryBirds {
-    private static Collection<Integer> birds = new ArrayList<>();
+    private static List<Integer> birds = new ArrayList<>();
     private static Map<Integer, Integer> map = new HashMap<>();
 
 
