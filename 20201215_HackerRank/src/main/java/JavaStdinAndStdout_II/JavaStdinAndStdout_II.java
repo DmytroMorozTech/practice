@@ -22,6 +22,9 @@ public class JavaStdinAndStdout_II {
     }
 }
 
+// scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+// we may use this line of code as well. It is used at HackerRank web-site.
+
 //            https://stackoverflow.com/questions/13102045/scanner-is-skipping-nextline-after-using-next-or-nextfoo
 //            That's because the Scanner.nextInt method does not read the newline character in your
 //            input created by hitting "Enter," and so the call to Scanner.nextLine returns after
