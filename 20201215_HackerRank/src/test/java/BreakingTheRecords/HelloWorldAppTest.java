@@ -1,5 +1,0 @@
-package BreakingTheRecords;
-
-class HelloWorldAppTest {
-
-}
