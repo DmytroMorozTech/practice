@@ -39,7 +39,6 @@ public class TaskIPv4 {
                 return;
             }
 
-            // if ip.a is not found in data:
             Set<Integer> setD = new HashSet<>();
             setD.add(ip.d);
             Map<Integer, Set<Integer>> mapCD = new HashMap<>();
@@ -47,6 +46,7 @@ public class TaskIPv4 {
             Map<Integer, Map<Integer, Set<Integer>>> mapBCD = new HashMap<>();
             mapBCD.put(ip.b, mapCD);
 
+            // if ip.a is not found in data:
             if (!data.containsKey(ip.a)) {
                 data.put(ip.a, mapBCD);
                 return;
@@ -248,7 +248,6 @@ public class TaskIPv4 {
         System.out.printf("ipStructure.contains(\"100.156.5.7\"): %b \n", ipStructure.contains("100.156.5.7")); // true
 
         System.out.println(ipStructure);
-        System.out.println("HELLO!");
 
     }
 
