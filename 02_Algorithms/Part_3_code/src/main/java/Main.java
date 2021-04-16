@@ -2,7 +2,7 @@ import com.codewithmosh.BubbleSort;
 import com.codewithmosh.InsertionSort;
 import com.codewithmosh.MergeSort;
 import com.codewithmosh.SelectionSortDima;
-import dima.LinkedList;
+import com.dima.LinkedList;
 
 import java.util.Arrays;
 
