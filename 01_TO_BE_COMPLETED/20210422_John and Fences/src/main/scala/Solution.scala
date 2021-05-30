@@ -5,8 +5,10 @@ import scala.math
 object Solution {
 	def main(args: Array[String]) {
 		val rd = new BufferedReader(new InputStreamReader(System.in))
-		val N = rd.readLine().toInt
+		val N = rd.readLine().toInt // N denotes the number of fences
 		val h = Array(0) ++ rd.readLine().split(' ').map(_.toInt) ++ Array(0)
+		// here we have read N space separated integers, h1 h2 ... hN,
+		// which represents the height of each fence, and saved these heights to an array;
 		var l: ArrayBuffer[Int] = ArrayBuffer.fill(h.length)(-1)
 		var r: ArrayBuffer[Int] = ArrayBuffer.fill(h.length)(-1)
 		for (i <- 1 until h.length - 1) {
